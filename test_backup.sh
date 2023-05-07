@@ -1,7 +1,7 @@
 #!/bin/bash
 FS=rpool/USERDATA/berto_zbq731/test
 MOUNTPOINT=/home/berto/test
-BACKUP_DIR=/home/berto/Documents/Papa
+BACKUP_DIR=/home/berto/Documents/Amazon
 BACKUP_DIR1=/home/berto/Documents/moto
 SNAPSHOT_NAME=snapshot_test
 SNAPSHOT=$FS@$SNAPSHOT_NAME
@@ -29,7 +29,7 @@ sudo zfs destroy $BACKUP_FS -r
 # 7 Copy data to the backup using the send command
 echo "Full copy"
 date
-sudo zfs send $SNAPSHOT | sudo zfs receive $BACKUP_FS
+sudo zfs send $SNAPSHOT | sudo zfs receive $BACKUP_FS -o canmount=off
 date
 echo
 

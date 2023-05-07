@@ -11,5 +11,5 @@ if [ "$OLD_SNAPSHOT" == "" ]; then
   sudo zfs send $SRC_FS@$NEW_SNAPSHOT | sudo zfs receive $DST_FS
 else
   # At least 1 snapshot exists. I need to do an incremental backup
-  sudo zfs send -i $SRC_FS@$OLD_SNAPSHOT $SRC_FS@$NEW_SNAPSHOT | sudo zfs receive $DST_FS
+  sudo zfs send -i $SRC_FS@$OLD_SNAPSHOT $SRC_FS@$NEW_SNAPSHOT | sudo zfs receive $DST_FS -F
 fi
